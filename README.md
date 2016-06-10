@@ -1,9 +1,9 @@
-## Dynamic Vanilla RNN, GRU, LSTM with Tensorflow Higher Order Ops
+## Dynamic Vanilla RNN, GRU, LSTM,2layer Stacked LSTM with Tensorflow Higher Order Ops
 
-These RNN, GRU, LSTM is implemented with 8 by 8 MNIST dataset for checking. 
+These RNN, GRU, LSTM and 2layer Stacked LSTM is implemented with 8 by 8 MNIST dataset for checking. 
 
 
-This repository contains the simple example of dynamic seqence and batch vhanilla RNN,GRU, LSTM written in tensorflow using scan and map ops.
+This repository contains the simple example of dynamic seqence and batch vhanilla RNN,GRU, LSTM,2layer Stacked LSTM written in tensorflow using scan and map ops.
 
 Every folder contains with .python file and ipython notebook for convenience.
 
