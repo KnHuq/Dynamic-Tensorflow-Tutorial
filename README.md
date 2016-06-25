@@ -10,4 +10,4 @@ Every folder contains with .python file and ipython notebook for convenience.
 This examples gives a very good understanding of the implementation of Dynamic RNN in tensorflow.
 These code can be extended to create neural stack machine, neural turing machine, RNN-EMM in tensorflow.
 
-####For any question please ask them on  <a href="https://twitter.com/KaziShezan1437">twitter</a> and I will love to answer those. Follow me on <a href="https://twitter.com/KaziShezan1437">twitter</a> for more updates.
+####For any questions please ask them on  <a href="https://twitter.com/KaziShezan1437">twitter</a> and I will love to answer those. Follow me on <a href="https://twitter.com/KaziShezan1437">twitter</a> for more updates.
