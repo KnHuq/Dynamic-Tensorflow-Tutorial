@@ -1,7 +1,7 @@
 ##Tensorflow tutorial to build any model from scratch.
 
 ##In this repo these are presented 
-1. Dynamic Vanilla RNN ---> <a href="">Notebook</a> , <a href>Code</a>
+1. Dynamic Vanilla RNN ---> <a href="https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Vhanilla_RNN/RNN.ipynb">Notebook</a> , <a href="https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Vhanilla_RNN/RNN.py">Code</a>
 2. GRU ---> <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/GRU/GRU.ipynb">Notebook</a> , <a href="https://github.com/KnHuq/Tensorflow-tutorial/blob/master/GRU/GRU.py">Code</a>
 3. LSTM ---> <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/LSTM/LSTM.ipynb">Notebook</a> , <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/LSTM/LSTM.py">Code</a>
 4. 2layerStacked LSTM ---> <a href="https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Two%20Layer%20Stacked%20LSTM/Two%20Later%20Stacked%20LSTM.ipynb">Notebook</a> , <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Two%20Layer%20Stacked%20LSTM/Two%20Later%20Stacked%20LSTM.py">Code</a>
