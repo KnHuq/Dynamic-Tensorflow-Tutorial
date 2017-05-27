@@ -140,7 +140,7 @@ outputs = rnn.get_outputs()
 
 
 # Getting final output through indexing after reversing
-last_output = tf.reverse(outputs, [True, False, False])[0, :, :]
+last_output = outputs[-1]
 
 
 # As rnn model output the final layer through Relu activation softmax is

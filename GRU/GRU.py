@@ -79,8 +79,8 @@ class RNN_cell(object):
         h_ = tf.tanh(tf.matmul(x, self.Wx) +
                      tf.matmul(previous_hidden_state, self.Wh) * r)
 
-        current_hidden_state = tf.mul(
-            (1 - z), h_) + tf.mul(previous_hidden_state, z)
+        current_hidden_state = tf.multiply(
+            (1 - z), h_) + tf.multiply(previous_hidden_state, z)
 
         return current_hidden_state
 
@@ -155,7 +155,7 @@ outputs = rnn.get_outputs()
 
 
 # Getting final output through indexing after reversing
-last_output = tf.reverse(outputs, [True, False, False])[0, :, :]
+last_output = outputs[-1]
 
 
 # As rnn model output the final layer through Relu activation softmax is
