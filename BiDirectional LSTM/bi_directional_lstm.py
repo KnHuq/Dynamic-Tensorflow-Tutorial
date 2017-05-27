@@ -325,7 +325,7 @@ output = tf.nn.softmax(last_output)
 cross_entropy = -tf.reduce_sum(y * tf.log(output))
 
 # Trainning with Adadelta Optimizer
-train_step = tf.train.AdadeltaOptimizer().minimize(cross_entropy)
+train_step = tf.train.AdamOptimizer().minimize(cross_entropy)
 
 
 # Calculatio of correct prediction and accuracy
