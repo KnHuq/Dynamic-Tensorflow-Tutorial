@@ -113,7 +113,7 @@ class Bi_LSTM_cell(object):
         self.initial_hidden = tf.matmul(
             self.initial_hidden, tf.zeros([input_size, hidden_layer_size]))
 
-        self.initial_hidden = tf.pack(
+        self.initial_hidden = tf.stack(
             [self.initial_hidden, self.initial_hidden])
 
     # Function for Forward LSTM cell.
@@ -124,7 +124,7 @@ class Bi_LSTM_cell(object):
         outputs current hidden state.
         """
 
-        previous_hidden_state, c_prev = tf.unpack(previous_hidden_memory_tuple)
+        previous_hidden_state, c_prev = tf.unstack(previous_hidden_memory_tuple)
 
         # Input Gate
         i = tf.sigmoid(
@@ -156,7 +156,7 @@ class Bi_LSTM_cell(object):
         # Current Hidden state
         current_hidden_state = o * tf.nn.tanh(c)
 
-        return tf.pack([current_hidden_state, c])
+        return tf.stack([current_hidden_state, c])
 
     # Function for Forward LSTM cell.
     def Lstm_b(self, previous_hidden_memory_tuple, x):
@@ -166,7 +166,7 @@ class Bi_LSTM_cell(object):
         outputs current hidden state.
         """
 
-        previous_hidden_state, c_prev = tf.unpack(previous_hidden_memory_tuple)
+        previous_hidden_state, c_prev = tf.unstack(previous_hidden_memory_tuple)
 
         # Input Gate
         i = tf.sigmoid(
@@ -198,7 +198,7 @@ class Bi_LSTM_cell(object):
         # Current Hidden state
         current_hidden_state = o * tf.nn.tanh(c)
 
-        return tf.pack([current_hidden_state, c])
+        return tf.stack([current_hidden_state, c])
 
     # Function to get the hidden and memory cells after forward pass
     def get_states_f(self):
@@ -227,14 +227,12 @@ class Bi_LSTM_cell(object):
 
         # Reversing the hidden and memory state to get the final hidden and
         # memory state
-        last_hidden_states = tf.reverse(
-            all_hidden_states, [True, False, False])[0, :, :]
-        last_memory_states = tf.reverse(
-            all_memory_states, [True, False, False])[0, :, :]
+        last_hidden_states = all_hidden_states[-1]
+        last_memory_states = all_memory_states[-1]
 
         # For backward pass using the last hidden and memory of the forward
         # pass
-        initial_hidden = tf.pack([last_hidden_states, last_memory_states])
+        initial_hidden = tf.stack([last_hidden_states, last_memory_states])
 
         # Getting all hidden state throuh time
         all_hidden_memory_states = tf.scan(self.Lstm_b,
@@ -243,10 +241,10 @@ class Bi_LSTM_cell(object):
                                            name='states')
 
         # Now reversing the states to keep those in original order
-        all_hidden_states = tf.reverse(all_hidden_memory_states[
-                                       :, 0, :, :], [True, False, False])
-        all_memory_states = tf.reverse(all_hidden_memory_states[
-                                       :, 1, :, :], [True, False, False])
+        #all_hidden_states = tf.reverse(all_hidden_memory_states[
+        #                               :, 0, :, :], [True, False, False])
+        #all_memory_states = tf.reverse(all_hidden_memory_states[
+        #                               :, 1, :, :], [True, False, False])
 
         return all_hidden_states, all_memory_states
 
@@ -261,7 +259,7 @@ class Bi_LSTM_cell(object):
 
         # Concating the hidden states of forward and backward pass
         concat_hidden = tf.concat(
-            2, [all_hidden_states_f, all_hidden_states_b])
+            [all_hidden_states_f, all_hidden_states_b],2)
 
         return concat_hidden
 
@@ -317,7 +315,7 @@ outputs = rnn.get_outputs()
 
 
 # Getting first output through indexing
-last_output = outputs[0, :, :]
+last_output = outputs[-1]
 
 # As rnn model output the final layer through Relu activation softmax is
 # used for final output.
@@ -327,7 +325,7 @@ output = tf.nn.softmax(last_output)
 cross_entropy = -tf.reduce_sum(y * tf.log(output))
 
 # Trainning with Adadelta Optimizer
-train_step = tf.train.AdadeltaOptimizer().minimize(cross_entropy)
+train_step = tf.train.AdamOptimizer().minimize(cross_entropy)
 
 
 # Calculatio of correct prediction and accuracy

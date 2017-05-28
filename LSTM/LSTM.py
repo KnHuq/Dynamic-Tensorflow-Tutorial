@@ -77,7 +77,7 @@ class LSTM_cell(object):
         self.initial_hidden = tf.matmul(
             self.initial_hidden, tf.zeros([input_size, hidden_layer_size]))
 
-        self.initial_hidden = tf.pack(
+        self.initial_hidden = tf.stack(
             [self.initial_hidden, self.initial_hidden])
     # Function for LSTM cell.
 
@@ -88,7 +88,7 @@ class LSTM_cell(object):
         outputs current hidden state.
         """
 
-        previous_hidden_state, c_prev = tf.unpack(previous_hidden_memory_tuple)
+        previous_hidden_state, c_prev = tf.unstack(previous_hidden_memory_tuple)
 
         # Input Gate
         i = tf.sigmoid(
@@ -120,7 +120,7 @@ class LSTM_cell(object):
         # Current Hidden state
         current_hidden_state = o * tf.nn.tanh(c)
 
-        return tf.pack([current_hidden_state, c])
+        return tf.stack([current_hidden_state, c])
 
     # Function for getting all hidden state.
     def get_states(self):
@@ -194,7 +194,7 @@ outputs = rnn.get_outputs()
 # In[7]:
 
 # Getting final output through indexing after reversing
-last_output = tf.reverse(outputs, [True, False, False])[0, :, :]
+last_output = outputs[-1]
 
 
 # As rnn model output the final layer through Relu activation softmax is
@@ -207,7 +207,7 @@ cross_entropy = -tf.reduce_sum(y * tf.log(output))
 
 
 # Trainning with Adadelta Optimizer
-train_step = tf.train.AdadeltaOptimizer().minimize(cross_entropy)
+train_step = tf.train.AdamOptimizer().minimize(cross_entropy)
 
 
 # Calculatio of correct prediction and accuracy
