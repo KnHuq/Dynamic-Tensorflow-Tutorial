@@ -160,23 +160,19 @@ train_step = tf.train.AdamOptimizer().minimize(cross_entropy)
 correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(output, 1))
 accuracy = (tf.reduce_mean(tf.cast(correct_prediction, tf.float32))) * 100
 
+sess = tf.InteractiveSession()
+sess.run(tf.initialize_all_variables())
 
-# # Dataset Preparation
 
-
-# Function to get on hot
-def get_on_hot(number):
-    on_hot = [0] * 10
-    on_hot[number] = 1
-    return on_hot
-
+# Dataset Preparation
 
 # Using Sklearn MNIST dataset.
 digits = datasets.load_digits()
 X = digits.images
 Y_ = digits.target
-Y = map(get_on_hot, Y_)
 
+# One hot encoding
+Y = sess.run(tf.one_hot(indices=Y_, depth=target_size))
 
 # Getting Train and test Dataset
 X_train, X_test, y_train, y_test = train_test_split(
@@ -185,10 +181,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Cuttting for simple iteration
 X_train = X_train[:1400]
 y_train = y_train[:1400]
-
-
-sess = tf.InteractiveSession()
-sess.run(tf.initialize_all_variables())
 
 
 # Iterations to do trainning
