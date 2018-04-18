@@ -7,7 +7,7 @@
 4. Dynamic 2layerStacked LSTM ---> <a href="https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Two%20Layer%20Stacked%20LSTM/Two%20Later%20Stacked%20LSTM.ipynb">Notebook</a> , <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/Two%20Layer%20Stacked%20LSTM/Two%20Later%20Stacked%20LSTM.py">Code</a>
 5. Dynamic BiDirectional LSTM ---> <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/BiDirectional%20LSTM/bi_directional_lstm.ipynb">Notebook</a> , <a href = "https://github.com/KnHuq/Tensorflow-tutorial/blob/master/BiDirectional%20LSTM/bi_directional_lstm.py">Code</a>
 6. Tensorboard Example ---><a href = "https://github.com/KnHuq/Dynamic-Tensorflow-Tutorial/blob/master/Tensorboard/Tensorboard.ipynb">Notebook</a>
-7. Tensorflow LSTM implementation with dynamic batch
+7. Tensorflow LSTM implementation with dynamic batch---><a href = "https://github.com/KnHuq/Dynamic-Tensorflow-Tutorial/tree/master/Dynamic_batch_LSTM">Notebook</a>
 
 These RNN, GRU, LSTM and 2layer Stacked LSTM is implemented with 8 by 8 MNIST dataset for checking. 
 
